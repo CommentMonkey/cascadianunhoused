@@ -1,6 +1,6 @@
 # Cascadian Unhoused
 
-**Cascadian Unhoused** is an open-source project that gathers, normalizes, and shares data on homelessness across the Cascadia region — with an initial focus on Oregon and Washington. The goal is to provide a clear, accessible picture of housing insecurity in the Pacific Northwest through transparent data collection and reporting.
+**Cascadian Unhoused** is an open-source project that gathers, normalizes, and shares data on homelessness across the Cascadia bioregion. The goal is to provide a clear, accessible picture of housing insecurity in the Pacific Northwest through transparent data collection and reporting.
 
 ## Purpose
 
