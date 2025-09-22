@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+
+<!--   Add google maps api -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=${MAPS_KEY}&callback=initMap"></script>
+
+<!--   Add jquery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  
+<!--   Add static js scripts -->
+  <script src="/static/mapstyles.js"></script>
+  <script src="/static/counties.js"></script>
+
+<!--   Load dependencies for Vega-Lite (Vega-Embed, Vega, and Vega-Lite) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@4.3.0/build/vega.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@3.0.0-rc9/build/vega-lite.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@3.24.1/build/vega-embed.js"></script>
+
+
+ 
+
+  <style type="text/css">
+      
+      #counties-map {
+        height: 500px;
+      }
+  </style>
+  <style>
+    h1 {
+      font-size: 70px;
+      font-weight: 800;
+    }
+    h2 {
+      font-weight: lighter-bold;
+      font-size: 20px;
+    }
+
+    h4{
+      font-size: 40px;
+      font-weight: 800;
+    }
+
+    p {
+      font-size: 15px;
+    }
+
+    #above-stats {
+      background-color: #006699;
+      color: white;
+    }
+
+  </style>
+
+{% endblock %}
+
+{% block content %}
+<div id="above-stats">
+<header>
+  <h1><strong>At Home in Oregon</strong></h1>
+</header>
+    <h2><em>An interactive visual display of K-12 student homelessness statistics for the state of Oregon.</em></h2>
+    <br><br><br>
+    <h3>Click the marker icons to see statistics for each county.</h3>
+
+
+    <div id="counties-map"></div>
+    <p>Data provided by the Oregon Department of Education. Student counts of less 
+    than 5 have been suppressed to protect student confidentiality.</p>
+</div>
+
+    <br>
+
+
+    <h4>Statewide Statistics</h4>
+
+    <script type="module">
+    // Load the Observable runtime
+    import {Runtime} from "https://unpkg.com/@observablehq/notebook-runtime?module";
+
+    // Import Observable notebook, compiled as an ES module
+    import notebook from "https://api.observablehq.com/@ergarrity/oregon-k-12-student-homelessness-statistics.js";
+
+
+    // Append statewide stacked bar chart to DOM body
+    Runtime.load(notebook, (variable) => {
+      if (variable.name === "statewide_chart_stackedbar") return {
+        fulfilled: (value) => document.body.appendChild(value)
+      };        
+    });
+
+
+    // Append statewide line chart to DOM body
+    Runtime.load(notebook, (variable) => {
+      if (variable.name === "statewide_chart_line") return {
+        fulfilled: (value) => document.body.appendChild(value)
+      };        
+    });
+
+
+    // Append statewide multiseries line chart to DOM body
+    Runtime.load(notebook, (variable) => {
+      if (variable.name === "statewide_chart_line_situation") return {
+        fulfilled: (value) => document.body.appendChild(value)
+      };        
+    });
+
+
+    // Append % change chart to DOM body
+    Runtime.load(notebook, (variable) => {
+      if (variable.name === "statewide_percentages_chart") return {
+        fulfilled: (value) => document.body.appendChild(value)
+      };        
+    });
+
+
+    </script>
+
+
+
+
+
+
+    
+
+{% endblock %}

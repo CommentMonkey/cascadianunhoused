@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Different Title {% endblock %}
+{% block head %}
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB3vnzlRv9RGwQ9FT5BEK9MrQxJuyf4p8&callback=initMap"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/static/mapstyles.js"></script>
+
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!--   Load dependencies for Vega-Lite (Vega-Embed, Vega, and Vega-Lite) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@4.3.0/build/vega.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@3.0.0-rc9/build/vega-lite.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@3.24.1/build/vega-embed.js"></script>
+
+
+  <script src="/static/counties.js"></script>
+
+  <style type="text/css">
+      
+      #counties-map {
+        height: 500px;
+      }
+  </style>
+
+{% endblock %}
+
+
+{% block content %}
+   <div id="counties-map"></div>
+   <div id="vis"></div>
+{% endblock %}
